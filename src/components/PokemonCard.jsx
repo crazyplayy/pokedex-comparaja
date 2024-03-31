@@ -20,6 +20,7 @@ const PokemonCard = ({ pokemonDetails }) => {
           <AvatarInfo
             name={pokemonDetails.name}
             imageUrl={pokemonDetails.sprites["front_default"]}
+            shinyUrl={pokemonDetails.sprites["front_shiny"]}
             number={pokemonDetails.id}
           />
         </Col>
