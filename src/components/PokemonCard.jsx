@@ -8,13 +8,14 @@ import PokemonType from "./PokemonCard/PokemonType";
 
 const PokemonCard = ({ pokemonDetails }) => {
   return (
-    <Card style={{ maxWidth: "65%", margin: "auto", marginTop: 20 }}>
+    <Card style={{ maxWidth: "55%", margin: "auto", marginTop: 20 }}>
       <Row gutter={16}>
         <Col
           span={12}
           style={{
             display: "flex",
             justifyContent: "center",
+            alignItems: "center"
           }}
         >
           <AvatarInfo
@@ -22,6 +23,7 @@ const PokemonCard = ({ pokemonDetails }) => {
             imageUrl={pokemonDetails.sprites["front_default"]}
             shinyUrl={pokemonDetails.sprites["front_shiny"]}
             number={pokemonDetails.id}
+            type={pokemonDetails.types[0].type.name}
           />
         </Col>
         <Col
@@ -32,7 +34,7 @@ const PokemonCard = ({ pokemonDetails }) => {
             paddingRight: "10px",
           }}
         >
-        <div style={{ display: 'flex', justifyContent: 'center', borderBottom: "1px solid #e8e8e8", paddingBottom: 12 , marginBottom: 16 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', borderBottom: "1px solid #e8e8e8", paddingBottom: 12 , marginBottom: 16, marginTop: 4 }}>
           {pokemonDetails.types.map((el) => (
             <PokemonType key={el.type.name} type={el.type.name} />
           ))}
