@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input, Tooltip } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import { usePokemonContext } from "../context/PokemonContext";
+import { TbPokeball } from "react-icons/tb";
 import Pokelogo from "../assets/Pokelogo.png";
 
 const { Search } = Input;
@@ -24,12 +25,12 @@ const SearchBar = () => {
         <Search
           placeholder="Who are you looking for?"
           allowClear
-          enterButton="Search"
+          enterButton={<TbPokeball style={{alignItems: "center", width: 20}}/>}
           size="large"
           onSearch={handleSearch}
           onChange={(event) => setSearchText(event.target.value)}
           value={searchText}
-          style={{ width: 400}}
+          style={{ width: 400,  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)"}}
         />
         <Tooltip title=<div>Search for a Pokémon <br/>  <strong>name</strong> or <strong> number</strong></div>>
           <QuestionCircleOutlined

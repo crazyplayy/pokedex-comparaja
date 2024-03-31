@@ -5,10 +5,11 @@ import GenericInfo from "./PokemonCard/GenericInfo";
 import Stats from "./PokemonCard/Stats";
 import Evolutions from "./PokemonCard/Evolutions";
 import PokemonType from "./PokemonCard/PokemonType";
+import "../styles/PokemonCard.css"
 
 const PokemonCard = ({ pokemonDetails }) => {
   return (
-    <Card style={{ maxWidth: "55%", margin: "auto", marginTop: 20 }}>
+    <Card className="card-container">
       <Row gutter={16}>
         <Col
           span={12}
@@ -30,7 +31,7 @@ const PokemonCard = ({ pokemonDetails }) => {
           span={12}
           style={{
             borderLeft: "1px solid #e8e8e8",
-            paddingLeft: "20px",
+            paddingLeft: "30px",
             paddingRight: "10px",
           }}
         >
