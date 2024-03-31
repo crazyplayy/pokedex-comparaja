@@ -3,7 +3,6 @@ import { Card, Row, Col } from "antd";
 import AvatarInfo from "./PokemonCard/AvatarInfo";
 import GenericInfo from "./PokemonCard/GenericInfo";
 import Stats from "./PokemonCard/Stats";
-import Evolutions from "./PokemonCard/Evolutions";
 import PokemonType from "./PokemonCard/PokemonType";
 import "../styles/PokemonCard.css"
 
@@ -48,7 +47,6 @@ const PokemonCard = ({ pokemonDetails }) => {
           <div style={{ borderTop: "1px solid #e8e8e8", paddingTop: 12, marginTop: 12 }}>
             <Stats data={pokemonDetails.stats} />
           </div>
-          {/* <Evolutions data={pokemonDetails.species.url} /> */}
         </Col>
       </Row>
     </Card>

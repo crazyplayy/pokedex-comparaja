@@ -8,10 +8,14 @@ import Pokelogo from "../assets/Pokelogo.png";
 const { Search } = Input;
 
 const SearchBar = () => {
-  const { searchPokemon } = usePokemonContext();
+  const { searchPokemon, setError } = usePokemonContext();
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
+    if (!searchText.trim()) {
+      setError("Please enter a Pokémon name or number");
+      return;
+    }
     searchPokemon(searchText);
     setSearchText("");
   };

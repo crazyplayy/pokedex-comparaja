@@ -25,7 +25,7 @@ export const PokemonProvider = ({ children }) => {
   };
 
   return (
-    <PokemonContext.Provider value={{ pokemonDetails, searchPokemon, loading, error }}>
+    <PokemonContext.Provider value={{ pokemonDetails, searchPokemon, setError, loading, error }}>
       {children}
     </PokemonContext.Provider>
   );
