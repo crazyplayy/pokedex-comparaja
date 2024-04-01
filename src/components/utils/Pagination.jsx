@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/Pagination.css"
+
 const Pagination = ({ currentPage, totalPages, onLeftClick, onRightClick }) => {
   return (
     <div className="pagination-container">

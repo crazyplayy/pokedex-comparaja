@@ -1,12 +1,22 @@
 import React from "react";
-import { Card, Typography } from "antd";
+import { Button, Card, Typography } from "antd";
 import PokemonType from "./PokemonCard/PokemonType";
-// import PokemonBackgroundColorPicker from "./utils/ColorPicker";
+import { usePokemonContext } from "../context/PokemonContext";
+import { MdFavorite } from "react-icons/md";
+import { MdFavoriteBorder } from "react-icons/md";
 
-const PokedexCard = ({ imageUrl, name, number, types }) => {
-  const formattedNumber = String(number).padStart(3, "0");
-//   const type = types[0].type.name;
-//   const backgroundColor = PokemonBackgroundColorPicker({ type });
+const PokedexCard = ({ pokemonDetails }) => {
+  const formattedNumber = String(pokemonDetails.id).padStart(3, "0");
+
+  const { addFavorite, removeFavorite, isFavorite } = usePokemonContext();
+
+  const handleFavoriteClick = () => {
+    if (isFavorite(pokemonDetails)) {
+      removeFavorite(pokemonDetails);
+    } else {
+      addFavorite(pokemonDetails);
+    }
+  };
 
   return (
     <Card
@@ -14,10 +24,30 @@ const PokedexCard = ({ imageUrl, name, number, types }) => {
         position: "relative",
         textAlign: "center",
         marginBottom: "30px",
-        boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
-        // backgroundColor: backgroundColor
+        boxShadow:
+          "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          zIndex: 1,
+        }}
+      >
+        <Button
+          onClick={handleFavoriteClick}
+          type="text"
+          icon={
+            isFavorite(pokemonDetails) ? (
+              <MdFavorite style={{ color: "red", fontSize: "20px" }} />
+            ) : (
+              <MdFavoriteBorder style={{fontSize: "20px"}} />
+            )
+          }
+        />
+      </div>
       <div
         style={{
           position: "absolute",
@@ -26,7 +56,11 @@ const PokedexCard = ({ imageUrl, name, number, types }) => {
           transform: "translateX(-50%)",
         }}
       >
-        <img src={imageUrl} alt={name} style={{ width: "100%" }} />
+        <img
+          src={pokemonDetails.sprites["front_default"]}
+          alt={pokemonDetails.name}
+          style={{ width: "100%" }}
+        />
       </div>
       <div style={{ marginTop: "10px" }}>
         <div>
@@ -37,7 +71,7 @@ const PokedexCard = ({ imageUrl, name, number, types }) => {
               fontWeight: "bold",
             }}
           >
-            {name}
+            {pokemonDetails.name}
           </Typography.Text>
         </div>
         <div>
@@ -47,7 +81,7 @@ const PokedexCard = ({ imageUrl, name, number, types }) => {
         </div>
       </div>
       <div style={{ marginTop: "10px" }}>
-        {types.map((el) => (
+        {pokemonDetails.types.map((el) => (
           <PokemonType key={el.type.name} type={el.type.name} />
         ))}
       </div>

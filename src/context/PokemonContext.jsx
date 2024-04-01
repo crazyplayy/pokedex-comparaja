@@ -5,6 +5,7 @@ const PokemonContext = createContext({});
 export const PokemonProvider = ({ children }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [pokemonDetails, setPokemonDetails] = useState(null);
+  const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const pageSize = 20;
@@ -42,7 +43,6 @@ export const PokemonProvider = ({ children }) => {
         const total = Math.ceil(data.count / pageSize);
         setTotalPages(total);
 
-        // Fetch details for each pokemon
         Promise.all(
           data.results.map((pokemon) =>
             fetch(pokemon.url).then((response) => response.json())
@@ -84,6 +84,19 @@ export const PokemonProvider = ({ children }) => {
     }
   };
 
+  const addFavorite = (pokemon) => {
+    setFavorites([...favorites, pokemon]);
+  };
+
+  const removeFavorite = (pokemon) => {
+    const updatedFavorites = favorites.filter((fav) => fav.id !== pokemon.id);
+    setFavorites(updatedFavorites);
+  };
+
+  const isFavorite = (pokemon) => {
+    return favorites.some((fav) => fav.id === pokemon.id);
+  };
+
   return (
     <PokemonContext.Provider
       value={{
@@ -97,6 +110,10 @@ export const PokemonProvider = ({ children }) => {
         setError,
         loading,
         error,
+        favorites,
+        addFavorite,
+        removeFavorite,
+        isFavorite,
       }}
     >
       {children}
