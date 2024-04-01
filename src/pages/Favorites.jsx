@@ -45,7 +45,7 @@ const Favorites = () => {
         >
           <Empty
             image={ErrorPokeball}
-            description={"You have no favorite Pokémons"}
+            description={error}
             style={{
               padding: 30,
               borderRadius: "5%",
@@ -55,7 +55,7 @@ const Favorites = () => {
           />
         </div>
       ) : (
-        favorites.length > 0 && (
+        favorites.length > 0 ? (
           <div
             style={{
               display: "flex",
@@ -66,13 +66,22 @@ const Favorites = () => {
           >
             <Row gutter={[16, 16]}>
               {favorites.map((pokemon, index) => (
-                <Col key={index}  xl={6}>
+                <Col key={index} xs={24} sm={12} md={10} lg={8} xl={6}>
                   <PokedexCard pokemonDetails={pokemon} />
                 </Col>
               ))}
             </Row>
           </div>
-        )
+        ) : (<Empty
+            image={ErrorPokeball}
+            description={"You have no favorite Pokémons"}
+            style={{
+              padding: 30,
+              borderRadius: "5%",
+              border: "1px solid #e8e8e8",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+            }}
+          />)
       )}
     </Row>
   );
