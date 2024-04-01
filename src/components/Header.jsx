@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
 import "../styles/Header.css";
-import about from "../assets/about.png"
 
 const Header = () => {
   const [selected, setSelected] = useState(1);
