@@ -1,0 +1,20 @@
+.header-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #333;
+  }
+  
+  .header-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .header-link:hover {
+    background-color: #555;
+  }
