@@ -1,12 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Menu } from "antd";
 
-const Footer = ({ selected }) => {
+const Footer = () => {
   const year = new Date().getFullYear();
-
   return (
-    <footer style={{ position: 'fixed', bottom: 0, width: '100%', textAlign: 'center', backgroundColor: '#333', color: 'white' }}>
-      <p style={{ fontStyle: "" }}>Copyright © {year} - crazyplayy</p>
-    </footer>
+    <Menu theme="dark" mode="horizontal" style={{justifyContent: "center", alignItems: "center", height: "35px", position: "fixed", bottom: 0, width: '100%', padding: -10}}>
+      <Menu.Item key="1">
+        <p >
+          Made by <a href="https://github.com/crazyplayy">crazyplayy</a> |
+          Copyright © {year}
+        </p>
+      </Menu.Item>
+    </Menu>
   );
 };
 
