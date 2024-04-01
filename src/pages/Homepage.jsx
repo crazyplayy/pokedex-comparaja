@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Empty, Spin } from "antd";
-import NavBar from "../components/NavigationBar";
 import SearchBar from "../components/SearchBar";
 import { usePokemonContext } from "../context/PokemonContext";
 import PokemonCard from "../components/PokemonCard";
@@ -11,7 +10,6 @@ const Homepage = () => {
 
   return (
     <>
-      <NavBar />
       <Row style={{ marginTop: "30px", justifyContent: "center" }}>
         <SearchBar />
       </Row>
