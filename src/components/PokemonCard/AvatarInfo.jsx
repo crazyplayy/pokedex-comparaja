@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Typography, Row, Col, Button } from 'antd';
 import { BsStars } from "react-icons/bs";
-import PokemonBackgroundColorPicker from '../logic/ColorPicker';
+import PokemonBackgroundColorPicker from '../utils/ColorPicker';
 
 const { Title } = Typography;
 

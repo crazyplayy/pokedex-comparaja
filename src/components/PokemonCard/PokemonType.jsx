@@ -1,6 +1,6 @@
 import React from "react";
 import { Tag } from "antd";
-import PokemonTypeColorPicker from "../logic/ColorPickerType";
+import PokemonTypeColorPicker from "../utils/ColorPickerType";
 
 const PokemonType = ({ type }) => {
   const { backgroundColor, color } = PokemonTypeColorPicker({ type }); 
