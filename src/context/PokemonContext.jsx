@@ -84,6 +84,15 @@ export const PokemonProvider = ({ children }) => {
     }
   };
 
+  const goToFirstPage= () => {
+    setCurrentPage(1);
+  };
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages);
+  };
+
+
   const addFavorite = (pokemon) => {
     setFavorites([...favorites, pokemon]);
   };
@@ -107,6 +116,8 @@ export const PokemonProvider = ({ children }) => {
         totalPages,
         goToNextPage,
         goToPreviousPage,
+        goToFirstPage,
+        goToLastPage,
         setError,
         loading,
         error,

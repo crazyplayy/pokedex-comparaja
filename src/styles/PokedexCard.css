@@ -20,16 +20,10 @@
   .back {
     backface-visibility: hidden;
     position: absolute;
-    top:0;
+    top: -25%;
     bottom: 0;
     left: 0;
     right: 0;
     transform: rotateY(180deg);
   }
   
-  .reduced-padding .ant-card-body {
-    padding-left: 4;
-    padding-top: 4;
-    padding-right: 4;
-    padding-bottom: 4;
-  }

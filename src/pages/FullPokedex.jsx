@@ -1,7 +1,7 @@
 import React from "react";
 import { usePokemonContext } from "../context/PokemonContext";
 import { Col, Empty, Row, Spin } from "antd";
-import Pagination from "../components/utils/Pagination";
+import Pagination from "../components/Pagination";
 import pokedex from "../assets/pokedex-round-no-bck.png";
 import ErrorPokeball from "../assets/broken-pokeball.png";
 import PokedexCard from "../components/PokedexCard";
@@ -15,6 +15,8 @@ const FullPokedex = () => {
     totalPages,
     goToNextPage,
     goToPreviousPage,
+    goToFirstPage,
+    goToLastPage
   } = usePokemonContext();
 
   return (
@@ -78,6 +80,8 @@ const FullPokedex = () => {
                 totalPages={totalPages}
                 onLeftClick={goToPreviousPage}
                 onRightClick={goToNextPage}
+                onClickToFirst={goToFirstPage}
+                onClickToLast={goToLastPage}
               />
             </Row>
             <Row gutter={[16, 16]}>

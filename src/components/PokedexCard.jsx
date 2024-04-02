@@ -16,7 +16,7 @@ const PokedexCard = ({ pokemonDetails }) => {
             style={{
               position: "relative",
               textAlign: "center",
-              marginBottom: "50px",
+              marginBottom: "80px",
               boxShadow:
                 "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
             }}
@@ -67,12 +67,9 @@ const PokedexCard = ({ pokemonDetails }) => {
             style={{
               position: "relative",
               textAlign: "center",
-              marginBottom: "30px",
               boxShadow:
                 "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
-              
             }}
-            className="reduced-padding"
           >
             <div
               style={{
@@ -82,11 +79,14 @@ const PokedexCard = ({ pokemonDetails }) => {
                 transform: "translateX(-50%)",
               }}
             >
-              <img
-                src={pokemonDetails.sprites["back_default"]}
-                alt={pokemonDetails.name}
-                style={{ width: "100%" }}
-              />
+              {
+                pokemonDetails.sprites["back_default"] && (
+                  <img
+                    src={pokemonDetails.sprites["back_default"]}
+                    alt={pokemonDetails.name}
+                    style={{ width: "100%" }}
+                  />
+                )}
             </div>
             <Row style={{ marginTop: 20 }}>
               <Col span={12}>
