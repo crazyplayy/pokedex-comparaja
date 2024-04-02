@@ -2,9 +2,9 @@ import React from "react";
 import { usePokemonContext } from "../context/PokemonContext";
 import { Col, Empty, Row, Spin } from "antd";
 import Pagination from "../components/utils/Pagination";
-import PokedexCard from "../components/PokedexCard";
 import pokedex from "../assets/pokedex-round-no-bck.png";
 import ErrorPokeball from "../assets/broken-pokeball.png";
+import PokedexCard from "../components/PokedexCard";
 
 const FullPokedex = () => {
   const {

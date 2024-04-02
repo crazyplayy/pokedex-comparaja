@@ -1,0 +1,35 @@
+.flip-container {
+    perspective: 1000px;
+    position: relative;
+  }
+  
+  .flip-container .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    
+  }
+  
+  .flip-container:hover .flipper {
+    transform: rotateY(180deg);
+  }
+  
+  .front{
+    backface-visibility: hidden;
+  }
+  .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: rotateY(180deg);
+  }
+  
+  .reduced-padding .ant-card-body {
+    padding-left: 4;
+    padding-top: 4;
+    padding-right: 4;
+    padding-bottom: 4;
+  }
