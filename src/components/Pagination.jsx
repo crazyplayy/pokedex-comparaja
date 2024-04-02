@@ -1,36 +1,53 @@
-import React from "react";
-import "../styles/Pagination.css"
+import React, { useContext } from "react";
+import { message } from "antd";
+import "../styles/Pagination.css";
+import { usePokemonContext } from "../context/PokemonContext";
 
-const Pagination = ({ currentPage, totalPages, onLeftClick, onRightClick, onClickToFirst, onClickToLast }) => {
+const Pagination = () => {
+  const {
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    goToFirstPage,
+    goToLastPage,
+    goToPreviousPage,
+    goToNextPage
+  } = usePokemonContext();
+
+  const handlePageChange = (event) => {
+    if (event.keyCode === 13 && event.target.value.trim() !== "") {
+      const newPage = parseInt(event.target.value, 10);
+      if (newPage >= 1 && newPage <= totalPages) {
+        setCurrentPage(newPage);
+        event.target.value = "";
+      } else {
+        message.error("Invalid page number. Please try a valid number.");
+      }
+    }
+  };
+
   return (
     <div className="pagination-container">
-      <button
-        className="pagination-left-button"
-        onClick={onClickToFirst}
-        disabled={currentPage === 1}
-      >
+      <button className="pagination-button" onClick={goToFirstPage}>
         {"<<"}
       </button>
-      <button
-        className="pagination-left-button"
-        onClick={onLeftClick}
-        disabled={currentPage === 1}
-      >
+      <button className="pagination-button" onClick={goToPreviousPage}>
         {"<"}
       </button>
-      <span className="pagination-text">{`${currentPage} / ${totalPages}`}</span>
-      <button
-        className="pagination-right-button"
-        onClick={onRightClick}
-        disabled={currentPage === totalPages}
-      >
+      <input
+        type="text"
+        className="pagination-page-input"
+        placeholder={currentPage}
+        onKeyDown={handlePageChange}
+        
+      />
+      <span className="pagination-text">
+        {` / ${totalPages}`}
+      </span>
+      <button className="pagination-button" onClick={goToNextPage}>
         {">"}
       </button>
-      <button
-        className="pagination-right-button"
-        onClick={onClickToLast}
-        disabled={currentPage === totalPages}
-      >
+      <button className="pagination-button" onClick={goToLastPage}>
         {">>"}
       </button>
     </div>

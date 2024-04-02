@@ -7,17 +7,7 @@ import ErrorPokeball from "../assets/broken-pokeball.png";
 import PokedexCard from "../components/PokedexCard";
 
 const FullPokedex = () => {
-  const {
-    pokemonList,
-    loading,
-    error,
-    currentPage,
-    totalPages,
-    goToNextPage,
-    goToPreviousPage,
-    goToFirstPage,
-    goToLastPage
-  } = usePokemonContext();
+  const { pokemonList, loading, error } = usePokemonContext();
 
   return (
     <Row style={{ marginTop: "30px", justifyContent: "center" }}>
@@ -75,14 +65,7 @@ const FullPokedex = () => {
               <img src={pokedex} alt="Logo" style={{ width: 200 }} />
             </Row>
             <Row gutter={[16, 16]}>
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onLeftClick={goToPreviousPage}
-                onRightClick={goToNextPage}
-                onClickToFirst={goToFirstPage}
-                onClickToLast={goToLastPage}
-              />
+              <Pagination />
             </Row>
             <Row gutter={[16, 16]}>
               {pokemonList.map((pokemon, index) => (

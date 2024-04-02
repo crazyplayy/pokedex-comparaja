@@ -1,38 +1,51 @@
 .pagination-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 60px;
-    font-weight: 250;
-  }
-  
-  .pagination-left-button,
-  .pagination-right-button {
-    display: flex;
-    background-color: rgb(249, 249, 249);
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  font-weight: 250;
+}
+
+.pagination-page-input {
+  width: 50px;
+  height: 30px;
+  margin: 0 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.pagination-page-input:focus {
+  outline: none;
+  border: 1px solid #5772d6;
+}
+
+.pagination-button {
+  background-color: rgb(249, 249, 249);
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 25%;
+  border: none;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.pagination-button:hover {
+  background-color: rgb(87, 98, 216);
+  color: rgb(249, 249, 249);
+  opacity: 0.8;
+}
+
+.pagination-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.pagination-text {
+    font-size: 17px;
     margin: 0 10px;
-    border-radius: 25%;
-    border: none;
-    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    margin-right: 10px; /* add this property */
   }
-  
-  .pagination-left-button:hover,
-  .pagination-right-button:hover {
-    background-color: rgb(87, 98, 216);
-    color: rgb(249, 249, 249);
-    opacity: 0.8;
-  }
-  
-  .pagination-left-button:disabled,
-  .pagination-right-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-  }
-  
-  .pagination-text {
-    font-size: 20px;
-    margin: 0 10px;
-  }
-  

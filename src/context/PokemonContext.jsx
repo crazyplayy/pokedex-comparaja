@@ -113,6 +113,7 @@ export const PokemonProvider = ({ children }) => {
         searchPokemon,
         pokemonList,
         currentPage,
+        setCurrentPage,
         totalPages,
         goToNextPage,
         goToPreviousPage,
