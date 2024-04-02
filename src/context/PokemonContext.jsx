@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { fetchPokemonDetails, fetchPokemonList } from "../components/utils/api";
 
 const PokemonContext = createContext({});
 
@@ -14,10 +15,7 @@ export const PokemonProvider = ({ children }) => {
 
   const searchPokemon = (searchText) => {
     setLoading(true);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${searchText}`)
-      .then((response) => {
-        return response.json();
-      })
+    fetchPokemonDetails(searchText)
       .then((data) => {
         setPokemonDetails(data);
         setLoading(false);
@@ -25,51 +23,26 @@ export const PokemonProvider = ({ children }) => {
       })
       .catch((error) => {
         setLoading(false);
-        setError(
-          <div>
-            Pokémon not found. <br /> Search for a valid Pokémon name or number{" "}
-          </div>
-        );
+        setError(error.message);
       });
   };
 
-  const fetchPokemonList = (offset) => {
+  const fetchPokemonData = async (offset) => {
     setLoading(true);
-    fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${offset}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const total = Math.ceil(data.count / pageSize);
-        setTotalPages(total);
-
-        Promise.all(
-          data.results.map((pokemon) =>
-            fetch(pokemon.url).then((response) => response.json())
-          )
-        )
-          .then((pokemonData) => {
-            setPokemonList(pokemonData);
-            setLoading(false);
-            setError(null);
-          })
-          .catch((error) => {
-            setLoading(false);
-            setError(
-              <div>Error fetching Pokémon data. Please try again later.</div>
-            );
-          });
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError(
-          <div>Error fetching Pokémon data. Please try again later.</div>
-        );
-      });
+    try {
+      const { pokemonData, total } = await fetchPokemonList(pageSize, offset);
+      setPokemonList(pokemonData);
+      setTotalPages(total);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   };
 
   useEffect(() => {
-    fetchPokemonList((currentPage - 1) * pageSize);
+    fetchPokemonData((currentPage - 1) * pageSize);
   }, [currentPage]);
 
   const goToNextPage = () => {
@@ -91,7 +64,6 @@ export const PokemonProvider = ({ children }) => {
   const goToLastPage = () => {
     setCurrentPage(totalPages);
   };
-
 
   const addFavorite = (pokemon) => {
     setFavorites([...favorites, pokemon]);

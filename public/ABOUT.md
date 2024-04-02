@@ -40,6 +40,8 @@ The machine is always right, and for all those bugs and misaligned components, t
         Making the button stay in the correct position was a pain, especially when the screen resolution is resized. In fact, I was unable to make the card look as good as I wanted in the mobile version.
 - Issue 4: Design Expertise
         There is a reason why I am a frontend developer and not a UI/UX engineer. Whenever I try to develop a component from scratch it turns out very obtuse, plain, or raw. I never like what I do, and normally the styling ends up different from component to component or far away from the objective. This is the reason why I use external UI libraries, especially antd, since they make the aesthetic very clean and allow me to focus on the implementation and functionality, especially at early stages, instead of aesthetic and overall appeal of the application.
+- Issue 5: Pagination Component
+        Even though I prefer to use UI libraries, I *can* design components. So, I decided to build the Pagination component myself to show my competences. It was a well fought war between Stack Overflow threads, CSS forums, and documentation, but in the end, I emerged victorious.
 
 ## Future features
 
