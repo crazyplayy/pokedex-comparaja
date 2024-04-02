@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { fetchPokemonDetails, fetchPokemonList } from "../components/utils/api";
+import GenerationPicker from "../components/utils/GenerationPicker";
 
 const PokemonContext = createContext({});
 
@@ -7,6 +8,7 @@ export const PokemonProvider = ({ children }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [pokemonDetails, setPokemonDetails] = useState(null);
   const [favorites, setFavorites] = useState([]);
+  const [selectedGeneration, setSelectedGeneration] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const pageSize = 20;
@@ -30,7 +32,7 @@ export const PokemonProvider = ({ children }) => {
   const fetchPokemonData = async (offset) => {
     setLoading(true);
     try {
-      const { pokemonData, total } = await fetchPokemonList(pageSize, offset);
+      const { pokemonData, total } = await fetchPokemonList(pageSize, offset, selectedGeneration);
       setPokemonList(pokemonData);
       setTotalPages(total);
       setLoading(false);
@@ -44,6 +46,11 @@ export const PokemonProvider = ({ children }) => {
   useEffect(() => {
     fetchPokemonData((currentPage - 1) * pageSize);
   }, [currentPage]);
+
+  useEffect(() => {
+    const {amount} = GenerationPicker(selectedGeneration);
+    fetchPokemonData(amount);
+  }, [selectedGeneration]);
 
   const goToNextPage = () => {
     if (currentPage < totalPages) {
@@ -91,6 +98,8 @@ export const PokemonProvider = ({ children }) => {
         goToPreviousPage,
         goToFirstPage,
         goToLastPage,
+        selectedGeneration,
+        setSelectedGeneration,
         setError,
         loading,
         error,

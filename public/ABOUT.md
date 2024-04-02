@@ -15,8 +15,8 @@ The goal of the project was to develop an application to search for Pokémon by 
 
 - Feature 1: A search bar that allows the user to search for Pokémon by number or name and display the results on a card.
     - Feature 1.1: The card displays the Pokémon image, name, number, types, weight, height, and base stats.
-    - Feature 1.2: The card allows the user to switch between the normal and shiny form of the Pokémon upon clicking the button.
-    - Feature 1.2: The card allows the user to switch between the male and female form of the Pokémon upon clicking the button.
+    - Feature 1.2: The card allows the user to switch between the normal and shiny form of the Pokémon upon clicking a button.
+    - Feature 1.2: The card allows the user to switch between the male and female (when available) form of the Pokémon upon clicking a button.
 - Feature 2: Complete Pokédex that allows the user to explore Pokémon in their numerical order.
     - Feature 2.1: Pagination allows the user to sort between sequential pages, go to a specific page, jump to the last page, and jump back to the first page.
     - Feature 2.2: The cards flip when you hover the mouse, showing the Pokémon weight, height, and base stats on the back.

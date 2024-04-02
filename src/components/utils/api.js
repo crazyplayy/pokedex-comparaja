@@ -1,3 +1,5 @@
+import GenerationPicker from "./GenerationPicker";
+
 const fetchPokemonDetails = async (searchText) => {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchText}`);
@@ -8,9 +10,10 @@ const fetchPokemonDetails = async (searchText) => {
     }
   };
   
-  const fetchPokemonList = async (pageSize, offset) => {
+  const fetchPokemonList = async (pageSize, offset, generation) => {
+    const {url}= GenerationPicker({ pageSize, offset, generation }); 
     try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${offset}`);
+      const response = await fetch(url);
       const data = await response.json();
       const total = Math.ceil(data.count / pageSize);
       const pokemonData = await Promise.all(
