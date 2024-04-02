@@ -22,8 +22,8 @@ function App() {
           <Route path="/about">
             <Route index element={<About />} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );
