@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { message } from "antd";
 import "../styles/Pagination.css";
 import { usePokemonContext } from "../context/PokemonContext";

@@ -52,7 +52,9 @@ const PokemonCard = ({ pokemonDetails }) => {
           <AvatarInfo
             name={pokemonDetails.name}
             imageUrl={pokemonDetails.sprites["front_default"]}
+            femaleUrl={pokemonDetails.sprites["front_female"]}
             shinyUrl={pokemonDetails.sprites["front_shiny"]}
+            femaleShinyUrl={pokemonDetails.sprites["front_shiny_female"]}
             number={pokemonDetails.id}
             type={pokemonDetails.types[0].type.name}
           />
