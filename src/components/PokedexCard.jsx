@@ -1,12 +1,23 @@
 import React from "react";
-import { Card, Col, Row, Typography } from "antd";
+import { Button, Card, Col, Row, Typography } from "antd";
 import "../styles/PokedexCard.css";
 import PokemonType from "./Card/PokemonType";
 import GenericInfo from "./Card/GenericInfo";
 import Stats from "./Card/Stats";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { usePokemonContext } from "../context/PokemonContext";
 
 const PokedexCard = ({ pokemonDetails }) => {
   const formattedNumber = String(pokemonDetails.id).padStart(3, "0");
+  const { addFavorite, removeFavorite, isFavorite } = usePokemonContext();
+
+  const handleFavoriteClick = () => {
+    if (isFavorite(pokemonDetails)) {
+      removeFavorite(pokemonDetails);
+    } else {
+      addFavorite(pokemonDetails);
+    }
+  };
 
   return (
     <div className="flip-container">
@@ -21,6 +32,26 @@ const PokedexCard = ({ pokemonDetails }) => {
                 "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
             }}
           >
+            <div
+              style={{
+                position: "absolute",
+                top: "10px",
+                left: "10px",
+                zIndex: 1,
+              }}
+            >
+              <Button
+                onClick={handleFavoriteClick}
+                type="text"
+                icon={
+                  isFavorite(pokemonDetails) ? (
+                    <MdFavorite style={{ color: "red", fontSize: "20px" }} />
+                  ) : (
+                    <MdFavoriteBorder style={{ fontSize: "20px" }} />
+                  )
+                }
+              />
+            </div>
             <div
               style={{
                 position: "absolute",
@@ -74,19 +105,38 @@ const PokedexCard = ({ pokemonDetails }) => {
             <div
               style={{
                 position: "absolute",
+                top: "10px",
+                left: "10px",
+                zIndex: 1,
+              }}
+            >
+              <Button
+                onClick={handleFavoriteClick}
+                type="text"
+                icon={
+                  isFavorite(pokemonDetails) ? (
+                    <MdFavorite style={{ color: "red", fontSize: "20px" }} />
+                  ) : (
+                    <MdFavoriteBorder style={{ fontSize: "20px" }} />
+                  )
+                }
+              />
+            </div>
+            <div
+              style={{
+                position: "absolute",
                 top: "-50px",
                 left: "50%",
                 transform: "translateX(-50%)",
               }}
             >
-              {
-                pokemonDetails.sprites["back_default"] && (
-                  <img
-                    src={pokemonDetails.sprites["back_default"]}
-                    alt={pokemonDetails.name}
-                    style={{ width: "100%" }}
-                  />
-                )}
+              {pokemonDetails.sprites["back_default"] && (
+                <img
+                  src={pokemonDetails.sprites["back_default"]}
+                  alt={pokemonDetails.name}
+                  style={{ width: "100%" }}
+                />
+              )}
             </div>
             <Row style={{ marginTop: 20 }}>
               <Col span={12}>
