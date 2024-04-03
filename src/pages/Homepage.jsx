@@ -38,7 +38,7 @@ const Homepage = () => {
           <Empty
             image={ErrorPokeball}
             description={error}
-            style={{ padding: 30, borderRadius: "5%", border: "1px solid #e8e8e8", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}
+            style={{ marginTop: 20 }}
           />
         </div>
       ) : (

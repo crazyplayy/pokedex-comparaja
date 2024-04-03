@@ -64,9 +64,9 @@ const Favorites = () => {
             marginTop: 20,
           }}
         >
-          <Row gutter={[16, 16]}>
+          <Row gutter={[16, 16]} style={{marginTop: 50, padding: 10}}>
             {favorites.map((pokemon, index) => (
-              <Col key={index} xs={24} sm={12} md={10} lg={8} xl={6}>
+              <Col key={index} xs={24} sm={12} md={10} lg={8} xl={6} style={{ minWidth: '300px' }}>
                 <PokedexCard pokemonDetails={pokemon} />
               </Col>
             ))}

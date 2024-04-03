@@ -42,7 +42,9 @@ const FullPokedex = () => {
               fontSize: 16,
             }}
           >
-            {selectedGeneration === "all" ? "Searching for the next Pokémons..." : "Gathering the Pokémon generation..."}
+            {selectedGeneration === "all"
+              ? "Searching for the next Pokémons..."
+              : "Gathering the Pokémon generation..."}
           </span>
         </div>
       ) : error ? (
@@ -100,9 +102,17 @@ const FullPokedex = () => {
                 <Option value="gen-9">Gen 9</Option>
               </Select>
             </Row>
-            <Row gutter={[16, 16]}>
+            <Row gutter={[16, 16]} style={{ padding: 10 }}>
               {pokemonList.map((pokemon, index) => (
-                <Col key={index} xs={24} sm={12} md={10} lg={8} xl={6}>
+                <Col
+                  key={index}
+                  xs={24}
+                  sm={12}
+                  md={10}
+                  lg={8}
+                  xl={6}
+                  style={{ minWidth: "300px" }}
+                >
                   <PokedexCard pokemonDetails={pokemon} />
                 </Col>
               ))}
