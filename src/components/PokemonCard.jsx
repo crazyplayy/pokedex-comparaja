@@ -43,6 +43,8 @@ const PokemonCard = ({ pokemonDetails }) => {
           <GenericInfo
             height={pokemonDetails.height}
             weight={pokemonDetails.weight}
+            column={2}
+            layout={"horizontal"}
           />
           <div style={{ borderTop: "1px solid #e8e8e8", paddingTop: 12, marginTop: 12 }}>
             <Stats data={pokemonDetails.stats} />

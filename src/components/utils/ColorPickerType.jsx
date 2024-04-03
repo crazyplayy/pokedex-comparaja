@@ -4,7 +4,7 @@ const PokemonTypeColorPicker = ({ type }) => {
 
   switch (type) {
     case 'poison':
-      backgroundColor = 'purple';
+      backgroundColor = "DarkViolet";
       color = 'white';
       break;
     case 'grass':
@@ -12,41 +12,43 @@ const PokemonTypeColorPicker = ({ type }) => {
       color = 'black';
       break;
     case 'water':
-      backgroundColor = 'DodgerBlue';
+      backgroundColor = "SkyBlue";
       break;
     case 'bug':
-      backgroundColor = 'LimeGreen';
+      backgroundColor = "LawnGreen";
       break;
     case 'fire':
-      backgroundColor = 'orangered';
+      backgroundColor = "Coral";
       color = 'white';
       break;
     case 'normal':
-      backgroundColor = 'Tomato';
-      color = 'white';
+      backgroundColor = "WhiteSmoke";
+      color = 'black';
       break;
     case 'electric':
-      backgroundColor = 'Gold';
+      backgroundColor = "Khaki";
       color = 'black';
       break;
     case 'ground':
-      backgroundColor = 'sandybrown';
+      backgroundColor = "BurlyWood";
       break;
     case 'fairy':
       backgroundColor = 'pink';
       color = 'black';
       break;
     case 'fighting':
-      backgroundColor = 'crimson';
+      backgroundColor = "IndianRed";
+      color = "white"
       break;
     case 'psychic':
       backgroundColor = 'hotpink';
       break;
     case 'rock':
-      backgroundColor = 'saddlebrown';
+      backgroundColor = "Sienna";
+      color = "white"
       break;
     case 'ghost':
-      backgroundColor = 'slateblue';
+      backgroundColor = "MediumSlateBlue";
       break;
     case 'dragon':
       backgroundColor = 'rebeccapurple';
