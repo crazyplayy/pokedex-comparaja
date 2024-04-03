@@ -18,6 +18,27 @@ const Header = () => {
     else if (location.pathname === "/about") setSelected(3);
   }, [location]);
 
+  const menuItems = [
+    {
+      key: "0",
+      label: <Link to="/complete-dex">Explore CompleteDex</Link>,
+      style: { marginLeft: "-15%" },
+    },
+    {
+      key: "1",
+      label: <Link to="/">Pokédex</Link>,
+    },
+    {
+      key: "2",
+      label: <Link to="/favorites">Favorites</Link>,
+    },
+    {
+      key: "3",
+      label: <Link to="/about">About</Link>,
+      style: { marginRight: "2%" },
+    },
+  ];
+
   return (
     <Menu
       theme="dark"
@@ -25,20 +46,8 @@ const Header = () => {
       style={{ justifyContent: "space-between" }}
       selectedKeys={[selected.toString()]}
       onClick={handleMenuClick}
-    >
-      <Menu.Item key="0" style={{ marginLeft: "-15%" }}>
-        <Link to="/complete-dex">Explore CompleteDex</Link>
-      </Menu.Item>
-      <Menu.Item key="1">
-       <Link to="/">Pokédex</Link>
-      </Menu.Item>
-      <Menu.Item key="2">
-        <Link to="/favorites">Favorites</Link>
-      </Menu.Item>
-      <Menu.Item key="3" style={{ marginRight: "2%" }}>
-        <Link to="/about">About</Link>
-      </Menu.Item>
-    </Menu>
+      items={menuItems}
+    />
   );
 };
 
