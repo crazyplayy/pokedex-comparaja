@@ -1,14 +1,45 @@
 import React from "react";
-import { Card, Row, Col } from "antd";
-import AvatarInfo from "./PokemonCard/AvatarInfo";
-import GenericInfo from "./PokemonCard/GenericInfo";
-import Stats from "./PokemonCard/Stats";
-import PokemonType from "./PokemonCard/PokemonType";
+import { Card, Row, Col, Button } from "antd";
+import AvatarInfo from "./Card/AvatarInfo";
+import GenericInfo from "./Card/GenericInfo";
+import Stats from "./Card/Stats";
+import PokemonType from "./Card/PokemonType";
 import "../styles/PokemonCard.css"
+import { usePokemonContext } from "../context/PokemonContext";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
 const PokemonCard = ({ pokemonDetails }) => {
+  const { addFavorite, removeFavorite, isFavorite } = usePokemonContext();
+
+  const handleFavoriteClick = () => {
+    if (isFavorite(pokemonDetails)) {
+      removeFavorite(pokemonDetails);
+    } else {
+      addFavorite(pokemonDetails);
+    }
+  };
   return (
     <Card className="card-container">
+    <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          zIndex: 1,
+        }}
+      >
+        <Button
+          onClick={handleFavoriteClick}
+          type="text"
+          icon={
+            isFavorite(pokemonDetails) ? (
+              <MdFavorite style={{ color: "red", fontSize: "20px" }} />
+            ) : (
+              <MdFavoriteBorder style={{fontSize: "20px"}} />
+            )
+          }
+        />
+      </div>
       <Row gutter={16}>
         <Col
           span={12}
@@ -21,7 +52,9 @@ const PokemonCard = ({ pokemonDetails }) => {
           <AvatarInfo
             name={pokemonDetails.name}
             imageUrl={pokemonDetails.sprites["front_default"]}
+            femaleUrl={pokemonDetails.sprites["front_female"]}
             shinyUrl={pokemonDetails.sprites["front_shiny"]}
+            femaleShinyUrl={pokemonDetails.sprites["front_shiny_female"]}
             number={pokemonDetails.id}
             type={pokemonDetails.types[0].type.name}
           />

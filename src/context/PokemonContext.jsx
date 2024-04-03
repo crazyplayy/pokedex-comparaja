@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { fetchPokemonDetails, fetchPokemonList } from "../components/utils/api";
+import GenerationPicker from "../components/utils/GenerationPicker";
 
 const PokemonContext = createContext({});
 
@@ -6,6 +8,7 @@ export const PokemonProvider = ({ children }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [pokemonDetails, setPokemonDetails] = useState(null);
   const [favorites, setFavorites] = useState([]);
+  const [selectedGeneration, setSelectedGeneration] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const pageSize = 20;
@@ -14,10 +17,7 @@ export const PokemonProvider = ({ children }) => {
 
   const searchPokemon = (searchText) => {
     setLoading(true);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${searchText}`)
-      .then((response) => {
-        return response.json();
-      })
+    fetchPokemonDetails(searchText)
       .then((data) => {
         setPokemonDetails(data);
         setLoading(false);
@@ -25,52 +25,32 @@ export const PokemonProvider = ({ children }) => {
       })
       .catch((error) => {
         setLoading(false);
-        setError(
-          <div>
-            Pokémon not found. <br /> Search for a valid Pokémon name or number{" "}
-          </div>
-        );
+        setError(error.message);
       });
   };
 
-  const fetchPokemonList = (offset) => {
+  const fetchPokemonData = async (offset) => {
     setLoading(true);
-    fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${offset}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const total = Math.ceil(data.count / pageSize);
-        setTotalPages(total);
-
-        Promise.all(
-          data.results.map((pokemon) =>
-            fetch(pokemon.url).then((response) => response.json())
-          )
-        )
-          .then((pokemonData) => {
-            setPokemonList(pokemonData);
-            setLoading(false);
-            setError(null);
-          })
-          .catch((error) => {
-            setLoading(false);
-            setError(
-              <div>Error fetching Pokémon data. Please try again later.</div>
-            );
-          });
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError(
-          <div>Error fetching Pokémon data. Please try again later.</div>
-        );
-      });
+    try {
+      const { pokemonData, total } = await fetchPokemonList(pageSize, offset, selectedGeneration);
+      setPokemonList(pokemonData);
+      setTotalPages(total);
+      setLoading(false);
+      setError(null);
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   };
 
   useEffect(() => {
-    fetchPokemonList((currentPage - 1) * pageSize);
+    fetchPokemonData((currentPage - 1) * pageSize);
   }, [currentPage]);
+
+  useEffect(() => {
+    const {amount} = GenerationPicker(selectedGeneration);
+    fetchPokemonData(amount);
+  }, [selectedGeneration]);
 
   const goToNextPage = () => {
     if (currentPage < totalPages) {
@@ -82,6 +62,14 @@ export const PokemonProvider = ({ children }) => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
+  };
+
+  const goToFirstPage= () => {
+    setCurrentPage(1);
+  };
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages);
   };
 
   const addFavorite = (pokemon) => {
@@ -104,9 +92,14 @@ export const PokemonProvider = ({ children }) => {
         searchPokemon,
         pokemonList,
         currentPage,
+        setCurrentPage,
         totalPages,
         goToNextPage,
         goToPreviousPage,
+        goToFirstPage,
+        goToLastPage,
+        selectedGeneration,
+        setSelectedGeneration,
         setError,
         loading,
         error,

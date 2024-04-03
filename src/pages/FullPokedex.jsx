@@ -1,21 +1,26 @@
 import React from "react";
 import { usePokemonContext } from "../context/PokemonContext";
-import { Col, Empty, Row, Spin } from "antd";
-import Pagination from "../components/utils/Pagination";
-import PokedexCard from "../components/PokedexCard";
+import { Col, Empty, Row, Select, Spin } from "antd";
+import Pagination from "../components/Pagination";
 import pokedex from "../assets/pokedex-round-no-bck.png";
 import ErrorPokeball from "../assets/broken-pokeball.png";
+import PokedexCard from "../components/PokedexCard";
+const { Option } = Select;
 
 const FullPokedex = () => {
   const {
     pokemonList,
     loading,
     error,
-    currentPage,
-    totalPages,
-    goToNextPage,
-    goToPreviousPage,
+    selectedGeneration,
+    setSelectedGeneration,
+    setCurrentPage,
   } = usePokemonContext();
+
+  const handleGenerationChange = (value) => {
+    setSelectedGeneration(value);
+    setCurrentPage(1);
+  };
 
   return (
     <Row style={{ marginTop: "30px", justifyContent: "center" }}>
@@ -37,7 +42,7 @@ const FullPokedex = () => {
               fontSize: 16,
             }}
           >
-            Searching for the next Pokémons...
+            {selectedGeneration === "all" ? "Searching for the next Pokémons..." : "Gathering the Pokémon generation..."}
           </span>
         </div>
       ) : error ? (
@@ -72,13 +77,28 @@ const FullPokedex = () => {
             <Row gutter={[16, 16]} style={{ marginBottom: 20 }}>
               <img src={pokedex} alt="Logo" style={{ width: 200 }} />
             </Row>
-            <Row gutter={[16, 16]}>
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onLeftClick={goToPreviousPage}
-                onRightClick={goToNextPage}
-              />
+            {selectedGeneration === "all" && (
+              <Row gutter={[16, 16]}>
+                <Pagination />
+              </Row>
+            )}
+            <Row style={{ marginBottom: 60 }}>
+              <Select
+                value={selectedGeneration}
+                style={{ width: 120 }}
+                onChange={handleGenerationChange}
+              >
+                <Option value="all">All</Option>
+                <Option value="gen-1">Gen 1</Option>
+                <Option value="gen-2">Gen 2</Option>
+                <Option value="gen-3">Gen 3</Option>
+                <Option value="gen-4">Gen 4</Option>
+                <Option value="gen-5">Gen 5</Option>
+                <Option value="gen-6">Gen 6</Option>
+                <Option value="gen-7">Gen 7</Option>
+                <Option value="gen-8">Gen 8</Option>
+                <Option value="gen-9">Gen 9</Option>
+              </Select>
             </Row>
             <Row gutter={[16, 16]}>
               {pokemonList.map((pokemon, index) => (

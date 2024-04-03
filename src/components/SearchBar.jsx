@@ -24,7 +24,7 @@ const SearchBar = () => {
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <img src={Pokelogo} alt="Logo" style={{ width: 200, marginBottom: 20 }} />
+      <img src={Pokelogo} alt="Logo" style={{ width: 280, marginBottom: 30 }} />
       <div style={{ display: "flex", alignItems: "center" }}>
         <Search
           placeholder="Who are you looking for?"
