@@ -323,6 +323,9 @@ This section suggests areas for improvement or optimization.
 
 #
 
-# QUICK DEMO
+# <center> QUICK DEMO </center>
+
+![quick-demo](https://github.com/crazyplayy/pokedex-comparaja/assets/48414755/0f557189-efab-4472-8a79-2b60954b5216)
+
 
 
