@@ -41,7 +41,7 @@ const FullPokedex = () => {
           <Empty
             image={ErrorPokeball}
             description={error}
-            className="empty-image"
+            className="empty"
           />
         </div>
       ) : (

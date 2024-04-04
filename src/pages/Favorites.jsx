@@ -24,14 +24,6 @@ const Favorites = () => {
             Gathering your favorite Pokémons!
           </span>
         </div>
-      ) : error ? (
-        <div className="error-container">
-          <Empty
-            image={ErrorPokeball}
-            description={error}
-            className="empty-image"
-          />
-        </div>
       ) : favorites.length > 0 ? (
         <div className="favorites-content">
           <Row gutter={[16, 16]} className="favorite-pokemon-row">

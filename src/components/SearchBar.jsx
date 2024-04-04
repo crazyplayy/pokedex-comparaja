@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Tooltip } from "antd";
+import { Input, Tooltip, message } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import { usePokemonContext } from "../context/PokemonContext";
 import { TbPokeball } from "react-icons/tb";
@@ -9,12 +9,12 @@ import "../styles/components/SearchBar.css";
 const { Search } = Input;
 
 const SearchBar = () => {
-  const { searchPokemon, setError } = usePokemonContext();
+  const { searchPokemon } = usePokemonContext();
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
     if (!searchText.trim()) {
-      setError("Please enter a Pokémon name or number");
+      message.error("Please enter a Pokémon name or number", 2);
       return;
     }
     searchPokemon(searchText);
