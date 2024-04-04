@@ -30,7 +30,7 @@ const AboutPage = () => {
 
       <div>
         <Title level={3} className="title-align">
-          What is this project?
+          What is this project
         </Title>
         <blockquote>
           <p>
@@ -93,8 +93,8 @@ const AboutPage = () => {
           <strong>Feature 2: Complete Pokédex</strong>
           <blockquote>
             <p>
-              Complete Pokédex that allows the user to explore Pokémon in their
-              numerical order.
+              A complete Pokédex that allows the user to explore Pokémon in
+              their numerical order.
             </p>
 
             <ul>
@@ -109,8 +109,8 @@ const AboutPage = () => {
             <ul>
               <li>
                 <p>
-                  The cards flip when you hover the mouse, showing the Pokémon
-                  weight, height, and base stats on the back.{" "}
+                  The cards flip when you hover the mouse, showing additional
+                  Pokémon information on the back.{" "}
                 </p>
               </li>
             </ul>
@@ -118,7 +118,7 @@ const AboutPage = () => {
           <strong>Feature 3: Favorites</strong>
           <blockquote>
             <p>
-              Favorites system that allows the user to keep track of their
+              A favorites system that allows the user to keep track of their
               favorite Pokémon.
             </p>
 
@@ -200,7 +200,7 @@ const AboutPage = () => {
           <strong>Step 4: Complete Pokédex</strong>
           <blockquote>
             <p>
-              "When I first read the assignment, this was what I initially
+              When I first read the assignment, this was what I initially
               thought I was going to create, and I was excited about it. Only
               after some careful readings did I understand that what I was being
               asked to do was much simpler. However, it never left my mind, so
@@ -215,7 +215,7 @@ const AboutPage = () => {
               to the initial page. I made sure the data fetching was working
               properly and the Pokémons were being displayed correctly. Then, I
               finished stylizing the Pokémon cards so they would feel aesthetic
-              and different from the search Pokémon card."
+              and different from the search Pokémon card.
             </p>
           </blockquote>
 
@@ -307,6 +307,12 @@ const AboutPage = () => {
         <Title level={3} className="title-align">
           Issues
         </Title>
+        <blockquote>
+          <p>
+            The machine is always right, and for all those bugs and misaligned
+            components, the problem is always between the desk and the chair.
+          </p>
+        </blockquote>
         <ul>
           <strong>Issue 0: Colorblind</strong>
           <blockquote>
@@ -403,7 +409,7 @@ const AboutPage = () => {
           </blockquote>
 
           <strong>
-            Issue 6: CSS <i>!important</i>
+            Issue 7: CSS <i>!important</i>
           </strong>
           <blockquote>
             <p>
@@ -414,8 +420,8 @@ const AboutPage = () => {
               ended up using <i>!important</i> 5 times, although in just three
               different class selectors. It still bothers me to have this
               keyword in my CSS files, but I really did try to avoid it, and it
-              is only there because I ran out of ideas to make it work on
-              those specific class selectors.
+              is only there because I ran out of ideas to make it work on those
+              specific class selectors.
             </p>
           </blockquote>
         </ul>
@@ -427,26 +433,30 @@ const AboutPage = () => {
         <Title level={3} className="title-align">
           Future features
         </Title>
-        <p>
-          This section outlines potential features that could be implemented in
-          the future. Some of them I actually tried to implement on this project
-          but ended up leaving them for a future update since the API responses
-          are very dense and require a huge number of sequential calls to get
-          some of these features working, which would endanger the
-          responsiveness of the current application.
-        </p>
-        <ul>
-          <li>
-            Display a Carousel component containing the evolution line of the
-            Pokémon displayed on the card upon search.
-          </li>
-          <li>Make Pokémon sprites (images) animated.</li>
-          <li>Add a filter by Pokémon type on the CompleteDex.</li>
-          <li>
-            Make a toggle that allows the background of the cards to be the same
-            color as the first Pokémon type.
-          </li>
-        </ul>
+        <blockquote>
+          <p>
+            This section outlines potential features to be implemented in the
+            future. Some of them I actually tried to implement on this project
+            but ended up leaving them for a future update since the API
+            responses are very dense and require a huge number of sequential
+            calls to get some of these features working, which would endanger
+            the responsiveness of the current application.
+          </p>
+        </blockquote>
+        <blockquote>
+          <ul>
+            <li>
+              Display a Carousel component containing the evolution line of the
+              Pokémon displayed on the card upon search.
+            </li>
+            <li>Make Pokémon sprites (images) animated.</li>
+            <li>Add a filter by Pokémon type on the CompleteDex.</li>
+            <li>
+              Make a toggle that allows the background of the cards to be the
+              same color as the first Pokémon type.
+            </li>
+          </ul>
+        </blockquote>
       </div>
 
       <Divider />
@@ -455,13 +465,20 @@ const AboutPage = () => {
         <Title level={3} className="title-align">
           Improvements
         </Title>
-        <p>This section suggests areas for improvement or optimization.</p>
-        <ul>
-          <li>Data parsing can be improved, especially after being fetched.</li>
-          <li>Have tests for every UI component using Jest.</li>
-          <li>Components size upon resizing the page</li>
-          <li>Mobile version properly adapted.</li>
-        </ul>
+        <blockquote>
+          <p>This section suggests areas for improvement or optimization.</p>
+        </blockquote>
+        <blockquote>
+          <ul>
+            <li>Convert the application to implement Typescript</li>
+            <li>
+              Data parsing can be improved, especially after being fetched.
+            </li>
+            <li>Have tests for every UI component using Jest.</li>
+            <li>Components size upon resizing the page</li>
+            <li>Mobile version properly adapted.</li>
+          </ul>
+        </blockquote>
       </div>
       <Divider />
     </div>
