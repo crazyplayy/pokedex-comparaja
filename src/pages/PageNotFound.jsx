@@ -9,9 +9,6 @@ import "../styles/pages/PageNotFound.css";
 const PageNotFound = () => {
   return (
     <Row
-      type="flex"
-      justify="center"
-      align="middle"
       className="page-not-found-container"
     >
       <Col span={8} align="middle">

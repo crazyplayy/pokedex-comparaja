@@ -1,17 +1,20 @@
 .page-not-found-container {
-    height: 80vh;
-  }
-  
-  .page-not-found-title {
-    color: black;
-  }
-  
-  .page-not-found-description {
-    font-size: 18px;
-  }
-  
-  .page-not-found-button {
-    display: flex;
-    align-items: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.page-not-found-title {
+  color: black;
+}
+
+.page-not-found-description {
+  font-size: 18px;
+}
+
+.page-not-found-button {
+  display: flex;
+  align-items: center;
+}

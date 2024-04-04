@@ -14,6 +14,7 @@ const Pagination = () => {
     goToNextPage
   } = usePokemonContext();
 
+  // handles page change and validates the input (only numbers between 1 and the total page count are allowed)
   const handlePageChange = (event) => {
     if (event.keyCode === 13 && event.target.value.trim() !== "") {
       const newPage = parseInt(event.target.value, 10);
@@ -29,26 +30,26 @@ const Pagination = () => {
   return (
     <div className="pagination-container">
       <button className="pagination-button" onClick={goToFirstPage}>
-        {"<<"}
+        {"<<"} {/* Button for first page */}
       </button>
       <button className="pagination-button" onClick={goToPreviousPage}>
-        {"<"}
+        {"<"} {/* Button for previous page */}
       </button>
       <input
         type="text"
         className="pagination-page-input"
         placeholder={currentPage}
-        onKeyDown={handlePageChange}
+        onKeyDown={handlePageChange} //handle page change when Enter key is pressed
         
       />
       <span className="pagination-text">
-        {` / ${totalPages}`}
+        {` / ${totalPages}`} {/* Display total number of pages */}
       </span>
       <button className="pagination-button" onClick={goToNextPage}>
-        {">"}
+        {">"} {/* Button for next page */}
       </button>
       <button className="pagination-button" onClick={goToLastPage}>
-        {">>"}
+        {">>"} {/* Button for last page */}
       </button>
     </div>
   );

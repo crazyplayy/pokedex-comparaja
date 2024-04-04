@@ -22,7 +22,7 @@ const FullPokedex = () => {
 
   const handleGenerationChange = (value) => {
     setSelectedGeneration(value);
-    setCurrentPage(1);
+    setCurrentPage(1); // Resetting current page to 1 when generation changes
   };
 
   return (
@@ -38,24 +38,21 @@ const FullPokedex = () => {
         </div>
       ) : error ? (
         <div className="error-container">
-          <Empty
-            image={ErrorPokeball}
-            description={error}
-            className="empty"
-          />
+          <Empty image={ErrorPokeball} description={error} className="empty" />
         </div>
       ) : (
         pokemonList.length > 0 && (
           <div className="pokemon-container">
             <Row gutter={[16, 16]} className="img-row">
-              <img src={pokedex} alt="Logo" className="pokedex-image" />
+              <img src={pokedex} alt="Logo" className="pokedex-image" /> {/* Pokédex Image */}
             </Row>
-            {selectedGeneration === "all" && (
+            {selectedGeneration === "all" && ( // Pagination only displays for all generations
               <Row gutter={[16, 16]}>
                 <Pagination />
               </Row>
             )}
-            <Row className="generation-row">
+            
+            <Row className="generation-row"> {/* Generation Filter */}
               <Select
                 value={selectedGeneration}
                 className="generation-select"
@@ -74,6 +71,7 @@ const FullPokedex = () => {
               </Select>
             </Row>
             <Row gutter={[16, 16]} className="pokemon-row">
+            {/* Grid with PokedexCard for each Pokémon */}
               {pokemonList.map((pokemon, index) => (
                 <Col
                   key={index}

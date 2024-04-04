@@ -4,13 +4,14 @@ import { Menu } from "antd";
 import "../styles/components/Header.css";
 
 const Header = () => {
-  const [selected, setSelected] = useState(1);
-  const location = useLocation();
+  const [selected, setSelected] = useState(1); // manages selected menu item
+  const location = useLocation(); // Accessing the current location on router
 
   const handleMenuClick = (e) => {
     setSelected(e.key);
   };
 
+  // Updates selected menu item based on current location
   React.useEffect(() => {
     if (location.pathname === "/complete-dex") setSelected(0);
     else if (location.pathname === "/") setSelected(1);

@@ -13,7 +13,7 @@ const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
-    if (!searchText.trim()) {
+    if (!searchText.trim()) { //handles empty input
       message.error("Please enter a Pokémon name or number", 2);
       return;
     }
@@ -30,12 +30,12 @@ const SearchBar = () => {
           allowClear
           enterButton={<TbPokeball className="search-icon" />}
           size="large"
-          onSearch={handleSearch}
-          onChange={(event) => setSearchText(event.target.value)}
+          onSearch={handleSearch} //when enter or button is clicked
+          onChange={(event) => setSearchText(event.target.value)} // Update search text on change
           value={searchText}
           className="search-input"
         />
-        <Tooltip title="Search for a Pokémon name or number">
+        <Tooltip title="Search for a Pokémon name or number"> {/* Tooltip for providing search instructions */}
           <QuestionCircleOutlined className="tooltip-icon" />
         </Tooltip>
       </div>

@@ -35,8 +35,8 @@ const PokemonCard = ({ pokemonDetails }) => {
         />
       </div>
       <Row gutter={16}>
-        <Col span={12} className="card-col-left">
-          <AvatarInfo
+        <Col span={12} className="card-col-left"> {/* Column for left side of the card */}
+          <AvatarInfo //Displays Pokémon image, name, and number
             name={pokemonDetails.name}
             imageUrl={pokemonDetails.sprites["front_default"]}
             femaleUrl={pokemonDetails.sprites["front_female"]}
@@ -46,19 +46,19 @@ const PokemonCard = ({ pokemonDetails }) => {
             type={pokemonDetails.types[0].type.name}
           />
         </Col>
-        <Col span={12} className="card-col-right">
-          <div className="type-container">
+        <Col span={12} className="card-col-right"> {/* Column for right side of the card */}
+          <div className="type-container"> {/* Displays Pokémon Types*/}
             {pokemonDetails.types.map((el) => (
               <PokemonType key={el.type.name} type={el.type.name} />
             ))}
           </div>
-          <GenericInfo
+          <GenericInfo //Displays Pokémon weight and height
             height={pokemonDetails.height}
             weight={pokemonDetails.weight}
             column={2}
             layout={"horizontal"}
           />
-          <div className="stats-container">
+          <div className="stats-container"> {/* Displays Pokémon Base Stats */}
             <Stats data={pokemonDetails.stats} />
           </div>
         </Col>

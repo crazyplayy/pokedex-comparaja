@@ -8,13 +8,10 @@ import "../styles/Common.css";
 
 
 const Favorites = () => {
-  const { favorites, loading, error } = usePokemonContext();
+  const { favorites, loading } = usePokemonContext();
 
   return (
     <Row
-      type="flex"
-      justify="center"
-      align="middle"
       className="favorites-container"
     >
       {loading ? (
@@ -24,7 +21,7 @@ const Favorites = () => {
             Gathering your favorite Pokémons!
           </span>
         </div>
-      ) : favorites.length > 0 ? (
+      ) : favorites.length > 0 ? ( // If there are favorite Pokémons, render them
         <div className="favorites-content">
           <Row gutter={[16, 16]} className="favorite-pokemon-row">
             {favorites.map((pokemon, index) => (
@@ -42,7 +39,7 @@ const Favorites = () => {
             ))}
           </Row>
         </div>
-      ) : (
+      ) : ( // If there are no favorite Pokémons, render error
         <Empty
           image={ErrorPokeball}
           description={"You have no favorite Pokémons"}

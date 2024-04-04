@@ -22,7 +22,7 @@ const PokedexCard = ({ pokemonDetails }) => {
   return (
     <div className="flip-container">
       <div className="flipper">
-        <div className="front">
+        <div className="front"> {/* Front side of the card */}
           <Card className="pokemon-card-front">
             <div className="favorite-button-front">
               <Button
@@ -37,14 +37,14 @@ const PokedexCard = ({ pokemonDetails }) => {
                 }
               />
             </div>
-            <div className="image-container">
+            <div className="image-container"> {/* Displays Pokémon front image */}
               <img
                 src={pokemonDetails.sprites["front_default"]}
                 alt={pokemonDetails.name}
                 className="img-width"
               />
             </div>
-            <div className="margin-at-top">
+            <div className="margin-at-top"> {/* Displays Pokémon name and number */}
               <div> 
                 <Typography.Text className="pokemon-name">{pokemonDetails.name}</Typography.Text>
               </div>
@@ -52,14 +52,14 @@ const PokedexCard = ({ pokemonDetails }) => {
                 <Typography.Text className="pokemon-number"># {formattedNumber}</Typography.Text>
               </div>
             </div>
-            <div className="margin-at-top">
+            <div className="margin-at-top"> {/* Displays Pokémon types */}
               {pokemonDetails.types.map((el) => (
                 <PokemonType key={el.type.name} type={el.type.name} />
               ))}
             </div>
           </Card>
         </div>
-        <div className="back">
+        <div className="back"> {/* Back side of the card */}
           <Card className="pokemon-card-back">
             <div className="favorite-button-back">
               <Button
@@ -74,7 +74,7 @@ const PokedexCard = ({ pokemonDetails }) => {
                 }
               />
             </div>
-            <div className="image-container">
+            <div className="image-container"> {/* Displays Pokémon back image */}
               {pokemonDetails.sprites["back_default"] && (
                 <img
                   src={pokemonDetails.sprites["back_default"]}
@@ -84,9 +84,9 @@ const PokedexCard = ({ pokemonDetails }) => {
               )}
             </div>
             <Row className="margin-at-top-increase">
-              <Col span={12}>
+              <Col span={12}> {/* Left column */}
                 <div className="margin-at-top">
-                  <GenericInfo
+                  <GenericInfo //Displays Pokémon weight and height
                     height={pokemonDetails.height}
                     weight={pokemonDetails.weight}
                     column={1}
@@ -94,8 +94,8 @@ const PokedexCard = ({ pokemonDetails }) => {
                   />
                 </div>
               </Col>
-              <Col span={12}>
-                <Stats data={pokemonDetails.stats} />
+              <Col span={12}> {/* Right column */}
+                <Stats data={pokemonDetails.stats} /> {/* Displays Pokémon Base Stats */}
               </Col>
             </Row>
           </Card>

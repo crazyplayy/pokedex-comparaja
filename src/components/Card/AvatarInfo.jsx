@@ -4,7 +4,7 @@ import { BsStars } from "react-icons/bs";
 import { GiMale, GiFemale } from "react-icons/gi";
 import PokemonBackgroundColorPicker from "../utils/ColorPicker";
 import "../../styles/components/Card/AvatarInfo.css";
-import "../../styles/Common.css"
+import "../../styles/Common.css";
 
 const { Title } = Typography;
 
@@ -17,7 +17,7 @@ const AvatarInfo = ({
   number,
   type,
 }) => {
-  const formattedNumber = String(number).padStart(3, "0");
+  const formattedNumber = String(number).padStart(3, "0"); //Add zeros to values between 1-99
   const [isShiny, setIsShiny] = useState(false);
   const [isMale, setIsMale] = useState(true);
 
@@ -32,12 +32,14 @@ const AvatarInfo = ({
   };
 
   return (
-    <Row justify="center">
+    <Row>
       <Col>
         <div className="avatar-container">
           <div className="avatar-background" style={{ backgroundColor }}>
+            {/* background color equal to first Pokémon type */}
             <img
               src={
+                //Selects the image url based on the selected gender and shiny version
                 isShiny
                   ? isMale
                     ? shinyUrl
@@ -49,7 +51,7 @@ const AvatarInfo = ({
               alt={name}
               className="avatar-image"
             />
-            <Button
+            <Button //Shiny Button
               shape="round"
               className="shiny-button"
               style={{ backgroundColor: isShiny ? "#0066ff" : "#fff" }}
@@ -57,7 +59,7 @@ const AvatarInfo = ({
             >
               <BsStars style={{ color: isShiny ? "#ffff1a" : "#0066ff" }} />
             </Button>
-            {femaleUrl && (
+            {femaleUrl && ( //Gender button only displayed if a female version is provided
               <Button
                 shape="round"
                 className="gender-button"
@@ -68,9 +70,11 @@ const AvatarInfo = ({
             )}
           </div>
           <div className="title-align">
+            {/* Pokémon name */}
             <Title level={2} className="avatar-name">
               {name}
             </Title>
+            {/* Pokémon number */}
             <Title level={5} className="avatar-number">
               # {formattedNumber}
             </Title>

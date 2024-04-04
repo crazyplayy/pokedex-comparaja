@@ -1,4 +1,5 @@
 const PokemonBackgroundColorPicker = ({ type }) => {
+  //Color picker for background color of Pokémon in PokémonCard component
   let backgroundColor = "";
 
   switch (type) {

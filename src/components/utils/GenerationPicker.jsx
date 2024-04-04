@@ -1,4 +1,5 @@
 const GenerationPicker = ({ pageSize, offset, generation }) => {
+  //URL picker for selected generation on the Pokédex filter
     let url = '';
     let amount = 0;
 

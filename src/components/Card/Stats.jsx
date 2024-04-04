@@ -4,6 +4,7 @@ import "../../styles/components/Card/Stats.css"
 
 const { Text } = Typography;
 
+// map base stat name to its abbreviation
 const mapStatName = (name) => {
   switch (name) {
     case "hp":
@@ -26,7 +27,7 @@ const mapStatName = (name) => {
 const Stats = ({ data }) => {
   return (
     <>
-      {data.map((item, index) => (
+      {data.map((item, index) => ( //Displays for each stat a row with the stat name and a progress bar (0 - 255)
         <Row key={index} className="margin-at-bottom">
         <Col span={8} >
             <Text strong>{mapStatName(item.stat.name)}:</Text>

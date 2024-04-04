@@ -1,4 +1,5 @@
 const PokemonTypeColorPicker = ({ type }) => {
+  //Color picker for background and text color of Pokémon type
   let backgroundColor = '';
   let color = '';
 
