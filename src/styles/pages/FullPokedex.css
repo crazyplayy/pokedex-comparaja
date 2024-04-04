@@ -1,0 +1,34 @@
+.full-pokedex-container {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.pokemon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-row {
+  margin-bottom: 20px;
+}
+
+.pokedex-image {
+  width: 200px;
+}
+
+.generation-row {
+  margin-bottom: 60px;
+}
+
+.generation-select {
+  width: 120px;
+}
+
+.pokemon-row {
+  padding: 10px;
+}
+
+.pokemon-col {
+  min-width: 300px;
+}

@@ -1,0 +1,95 @@
+.flip-container {
+  perspective: 1000px;
+  position: relative;
+}
+
+.flip-container .flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flip-container:hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.front {
+  backface-visibility: hidden;
+}
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: -25%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: rotateY(180deg);
+}
+
+.pokemon-card-front {
+  position: relative;
+  text-align: center;
+  margin-bottom: 80px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.favorite-button-front {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.favorite-color {
+  color: red;
+  font-size: 20px;
+}
+
+.favorite-icon {
+  font-size: 20px;
+}
+
+.image-container {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img-width {
+  width: 100%;
+}
+
+.margin-at-top {
+  margin-top: 10px;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pokemon-number {
+  color: darkgrey;
+  font-size: 14px;
+}
+
+.pokemon-card-back {
+  position: relative;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.favorite-button-back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.margin-at-top-increase {
+  margin-top: 20px;
+}
+
+

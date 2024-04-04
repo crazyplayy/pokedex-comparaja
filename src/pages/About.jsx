@@ -1,19 +1,21 @@
 import React from "react";
 import { Typography, Divider } from "antd";
+import "../styles/Common.css";
+import "../styles/pages/About.css";
 
 const { Title } = Typography;
 
 const AboutPage = () => {
   return (
-    <div style={{ padding: 30 }}>
-      <Title level={2} style={{ textAlign: "center" }}>
+    <div className="about-container">
+      <Title level={2} className="title-align">
         Project Overview
       </Title>
 
       <Divider />
 
       <div>
-        <Title level={3} style={{ textAlign: "center" }}>
+        <Title level={3} className="title-align">
           Why this project was created
         </Title>
         <blockquote>
@@ -27,7 +29,7 @@ const AboutPage = () => {
       <Divider />
 
       <div>
-        <Title level={3} style={{ textAlign: "center" }}>
+        <Title level={3} className="title-align">
           What is this project?
         </Title>
         <blockquote>
@@ -52,7 +54,7 @@ const AboutPage = () => {
       <Divider />
 
       <div>
-        <Title level={3} style={{ textAlign: "center" }}>
+        <Title level={3} className="title-align">
           Features
         </Title>
         <ul>
@@ -135,7 +137,7 @@ const AboutPage = () => {
       <Divider />
 
       <div>
-        <Title level={3} style={{ textAlign: "center" }}>
+        <Title level={3} className="title-align">
           Creation process
         </Title>
         <ul>
@@ -166,8 +168,8 @@ const AboutPage = () => {
               required information inside the card rather than having it all
               arranged from top to bottom, as I had seen in several other
               projects. This resulted in having the Pokémon image, name, and
-              number on the right side of the card, while the weight and height
-              were on the left side. Feeling that the card looked a bit empty
+              number on the left side of the card, while the weight and height
+              were on the right side. Feeling that the card looked a bit empty
               and that there was more information that could be presented, I
               added the Pokémon's types and base stats to the left side. This
               balanced out the card nicely. Next, I focused on aligning and
@@ -302,7 +304,7 @@ const AboutPage = () => {
       <Divider />
 
       <div>
-        <Title level={3} style={{ textAlign: "center" }}>
+        <Title level={3} className="title-align">
           Issues
         </Title>
         <ul>
@@ -368,7 +370,7 @@ const AboutPage = () => {
               turns out very obtuse, plain, or raw. I never like what I do, and
               normally the styling ends up different from component to component
               or far away from the objective. This is the reason why I use
-              external UI libraries, especially antd, since they make the
+              external UI libraries, especially Ant Design, since they make the
               aesthetic very clean and allow me to focus on the implementation
               and functionality, especially at early stages, instead of
               aesthetic and overall appeal of the application.
@@ -384,13 +386,45 @@ const AboutPage = () => {
               end, I emerged victorious.
             </p>
           </blockquote>
+          <strong>Issue 6: Menu Deprecation</strong>
+          <blockquote>
+            <p>
+              This was the final hurdle I faced before crossing the finish line.
+              I was fixing the console errors I still had after implementing
+              everything, and this was the most troublesome. The menu component
+              in Ant Design suffered a change after an upgrade in a specific
+              version, so it was constantly launching a deprecation warning
+              regarding this alteration. To make this work, I went through the
+              official documentation, Stack Overflow threads, and even delved
+              into Chinese GitHub issues from the official Ant Design
+              repository. This was really a pain to solve, not because the
+              solution was complex, but because finding it was so hard.
+            </p>
+          </blockquote>
+
+          <strong>
+            Issue 6: CSS <i>!important</i>
+          </strong>
+          <blockquote>
+            <p>
+              As I finished everything and was cleaning and refactoring my code,
+              I decided to move all inline styles in any component to specific
+              CSS files in order to make the code more readable and
+              maintainable. However, although 97% went pretty well, I still
+              ended up using <i>!important</i> 5 times, although in just three
+              different class selectors. It still bothers me to have this
+              keyword in my CSS files, but I really did try to avoid it, and it
+              is only there because I ran out of ideas to make it work on
+              those specific class selectors.
+            </p>
+          </blockquote>
         </ul>
       </div>
 
       <Divider />
 
       <div>
-        <Title level={3} style={{ textAlign: "center" }}>
+        <Title level={3} className="title-align">
           Future features
         </Title>
         <p>
@@ -403,14 +437,14 @@ const AboutPage = () => {
         </p>
         <ul>
           <li>
-            Display a Carousel component containing the evolution line of the Pokémon
-            displayed on the card upon search.
+            Display a Carousel component containing the evolution line of the
+            Pokémon displayed on the card upon search.
           </li>
           <li>Make Pokémon sprites (images) animated.</li>
           <li>Add a filter by Pokémon type on the CompleteDex.</li>
           <li>
-            Make a toggle that allows the background of the cards to be the
-            same color as the first Pokémon type.
+            Make a toggle that allows the background of the cards to be the same
+            color as the first Pokémon type.
           </li>
         </ul>
       </div>
@@ -418,7 +452,7 @@ const AboutPage = () => {
       <Divider />
 
       <div>
-        <Title level={3} style={{ textAlign: "center" }}>
+        <Title level={3} className="title-align">
           Improvements
         </Title>
         <p>This section suggests areas for improvement or optimization.</p>

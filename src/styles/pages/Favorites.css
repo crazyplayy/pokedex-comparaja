@@ -1,0 +1,23 @@
+.favorites-container {
+  margin-top: 30px;
+}
+
+.favorites-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.favorite-pokemon-row {
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.favorite-pokemon-col {
+  min-width: 300px;
+}
+
+.no-favorites {
+  margin-top: 15%;
+}

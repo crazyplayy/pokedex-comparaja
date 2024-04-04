@@ -5,6 +5,9 @@ import Pagination from "../components/Pagination";
 import pokedex from "../assets/pokedex-round-no-bck.png";
 import ErrorPokeball from "../assets/broken-pokeball.png";
 import PokedexCard from "../components/PokedexCard";
+import "../styles/pages/FullPokedex.css";
+import "../styles/Common.css";
+
 const { Option } = Select;
 
 const FullPokedex = () => {
@@ -23,71 +26,39 @@ const FullPokedex = () => {
   };
 
   return (
-    <Row style={{ marginTop: "30px", justifyContent: "center" }}>
+    <Row className="full-pokedex-container">
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 90,
-          }}
-        >
+        <div className="loading-container">
           <Spin size="large" />
-          <span
-            style={{
-              marginTop: 16,
-              fontFamily: "Arial, sans-serif",
-              fontSize: 16,
-            }}
-          >
+          <span className="loading-spinner">
             {selectedGeneration === "all"
               ? "Searching for the next Pokémons..."
               : "Gathering the Pokémon generation..."}
           </span>
         </div>
       ) : error ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 70,
-          }}
-        >
+        <div className="error-container">
           <Empty
             image={ErrorPokeball}
             description={error}
-            style={{
-              padding: 30,
-              borderRadius: "5%",
-              border: "1px solid #e8e8e8",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            }}
+            className="empty-image"
           />
         </div>
       ) : (
         pokemonList.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Row gutter={[16, 16]} style={{ marginBottom: 20 }}>
-              <img src={pokedex} alt="Logo" style={{ width: 200 }} />
+          <div className="pokemon-container">
+            <Row gutter={[16, 16]} className="img-row">
+              <img src={pokedex} alt="Logo" className="pokedex-image" />
             </Row>
             {selectedGeneration === "all" && (
               <Row gutter={[16, 16]}>
                 <Pagination />
               </Row>
             )}
-            <Row style={{ marginBottom: 60 }}>
+            <Row className="generation-row">
               <Select
                 value={selectedGeneration}
-                style={{ width: 120 }}
+                className="generation-select"
                 onChange={handleGenerationChange}
               >
                 <Option value="all">All</Option>
@@ -102,7 +73,7 @@ const FullPokedex = () => {
                 <Option value="gen-9">Gen 9</Option>
               </Select>
             </Row>
-            <Row gutter={[16, 16]} style={{ padding: 10 }}>
+            <Row gutter={[16, 16]} className="pokemon-row">
               {pokemonList.map((pokemon, index) => (
                 <Col
                   key={index}
@@ -111,7 +82,7 @@ const FullPokedex = () => {
                   md={10}
                   lg={8}
                   xl={6}
-                  style={{ minWidth: "300px" }}
+                  className="pokemon-col"
                 >
                   <PokedexCard pokemonDetails={pokemon} />
                 </Col>

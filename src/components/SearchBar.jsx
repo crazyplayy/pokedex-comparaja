@@ -4,6 +4,7 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 import { usePokemonContext } from "../context/PokemonContext";
 import { TbPokeball } from "react-icons/tb";
 import Pokelogo from "../assets/Pokelogo.png";
+import "../styles/components/SearchBar.css";
 
 const { Search } = Input;
 
@@ -21,25 +22,21 @@ const SearchBar = () => {
   };
 
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      <img src={Pokelogo} alt="Logo" style={{ width: 280, marginBottom: 30 }} />
-      <div style={{ display: "flex", alignItems: "center" }}>
+    <div className="search-bar-container">
+      <img src={Pokelogo} alt="Logo" className="logo-image" />
+      <div className="input-container">
         <Search
           placeholder="Who are you looking for?"
           allowClear
-          enterButton={<TbPokeball style={{alignItems: "center", width: 20}}/>}
+          enterButton={<TbPokeball className="search-icon" />}
           size="large"
           onSearch={handleSearch}
           onChange={(event) => setSearchText(event.target.value)}
           value={searchText}
-          style={{ width: 400,  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)"}}
+          className="search-input"
         />
-        <Tooltip title=<div>Search for a Pokémon <br/>  <strong>name</strong> or <strong> number</strong></div>>
-          <QuestionCircleOutlined
-            style={{ fontSize: 15, color: "gray", marginLeft: 10 }}
-          />
+        <Tooltip title="Search for a Pokémon name or number">
+          <QuestionCircleOutlined className="tooltip-icon" />
         </Tooltip>
       </div>
     </div>

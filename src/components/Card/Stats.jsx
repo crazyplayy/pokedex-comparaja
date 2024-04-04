@@ -1,9 +1,9 @@
 import React from "react";
 import { Progress, Row, Col, Typography } from "antd";
+import "../../styles/components/Card/Stats.css"
 
 const { Text } = Typography;
 
-// Function to map stat names to their abbreviations
 const mapStatName = (name) => {
   switch (name) {
     case "hp":
@@ -27,7 +27,7 @@ const Stats = ({ data }) => {
   return (
     <>
       {data.map((item, index) => (
-        <Row key={index} style={{ marginBottom: 8 }}>
+        <Row key={index} className="margin-at-bottom">
         <Col span={8} >
             <Text strong>{mapStatName(item.stat.name)}:</Text>
           </Col>

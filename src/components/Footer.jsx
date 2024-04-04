@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu } from "antd";
+import "../styles/components/Footer.css"
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -19,15 +20,7 @@ const Footer = () => {
     <Menu
       theme="dark"
       mode="horizontal"
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        height: "35px",
-        position: "fixed",
-        bottom: 0,
-        width: "100%",
-        padding: -10,
-      }}
+      className="footer-menu"
       items={footerItems}
     />
   );

@@ -3,6 +3,9 @@ import { usePokemonContext } from "../context/PokemonContext";
 import { Col, Empty, Row, Spin } from "antd";
 import PokedexCard from "../components/PokedexCard";
 import ErrorPokeball from "../assets/broken-pokeball.png";
+import "../styles/pages/Favorites.css";
+import "../styles/Common.css";
+
 
 const Favorites = () => {
   const { favorites, loading, error } = usePokemonContext();
@@ -12,61 +15,36 @@ const Favorites = () => {
       type="flex"
       justify="center"
       align="middle"
-      style={{ marginTop: "30px" }}
+      className="favorites-container"
     >
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 90,
-          }}
-        >
+        <div className="loading-container">
           <Spin size="large" />
-          <span
-            style={{
-              marginTop: 16,
-              fontFamily: "Arial, sans-serif",
-              fontSize: 16,
-            }}
-          >
+          <span className="loading-spinner">
             Gathering your favorite Pokémons!
           </span>
         </div>
       ) : error ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 70,
-          }}
-        >
+        <div className="error-container">
           <Empty
             image={ErrorPokeball}
             description={error}
-            style={{
-              padding: 30,
-              borderRadius: "5%",
-              border: "1px solid #e8e8e8",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            }}
+            className="empty-image"
           />
         </div>
       ) : favorites.length > 0 ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginTop: 20,
-          }}
-        >
-          <Row gutter={[16, 16]} style={{marginTop: 50, padding: 10}}>
+        <div className="favorites-content">
+          <Row gutter={[16, 16]} className="favorite-pokemon-row">
             {favorites.map((pokemon, index) => (
-              <Col key={index} xs={24} sm={12} md={10} lg={8} xl={6} style={{ minWidth: '300px' }}>
+              <Col
+                key={index}
+                xs={24}
+                sm={12}
+                md={10}
+                lg={8}
+                xl={6}
+                className="favorite-pokemon-col"
+              >
                 <PokedexCard pokemonDetails={pokemon} />
               </Col>
             ))}
@@ -76,9 +54,7 @@ const Favorites = () => {
         <Empty
           image={ErrorPokeball}
           description={"You have no favorite Pokémons"}
-          style={{
-            marginTop: "15%",
-          }}
+          className="no-favorites"
         />
       )}
     </Row>

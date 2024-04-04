@@ -1,6 +1,7 @@
 import { message } from "antd";
-import "../styles/Pagination.css";
 import { usePokemonContext } from "../context/PokemonContext";
+import "../styles/components/Pagination.css";
+
 
 const Pagination = () => {
   const {

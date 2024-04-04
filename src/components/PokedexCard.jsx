@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, Card, Col, Row, Typography } from "antd";
-import "../styles/PokedexCard.css";
 import PokemonType from "./Card/PokemonType";
 import GenericInfo from "./Card/GenericInfo";
 import Stats from "./Card/Stats";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { usePokemonContext } from "../context/PokemonContext";
+import "../styles/components/PokedexCard.css";
 
 const PokedexCard = ({ pokemonDetails }) => {
   const formattedNumber = String(pokemonDetails.id).padStart(3, "0");
@@ -23,70 +23,36 @@ const PokedexCard = ({ pokemonDetails }) => {
     <div className="flip-container">
       <div className="flipper">
         <div className="front">
-          <Card
-            style={{
-              position: "relative",
-              textAlign: "center",
-              marginBottom: "80px",
-              boxShadow:
-                "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: "10px",
-                left: "10px",
-                zIndex: 1,
-              }}
-            >
+          <Card className="pokemon-card-front">
+            <div className="favorite-button-front">
               <Button
                 onClick={handleFavoriteClick}
                 type="text"
                 icon={
                   isFavorite(pokemonDetails) ? (
-                    <MdFavorite style={{ color: "red", fontSize: "20px" }} />
+                    <MdFavorite className="favorite-color" />
                   ) : (
-                    <MdFavoriteBorder style={{ fontSize: "20px" }} />
+                    <MdFavoriteBorder className="favorite-icon" />
                   )
                 }
               />
             </div>
-            <div
-              style={{
-                position: "absolute",
-                top: "-50px",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
+            <div className="image-container">
               <img
                 src={pokemonDetails.sprites["front_default"]}
                 alt={pokemonDetails.name}
-                style={{ width: "100%" }}
+                className="img-width"
               />
             </div>
-            <div style={{ marginTop: "10px" }}>
-              <div>
-                <Typography.Text
-                  style={{
-                    textTransform: "capitalize",
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {pokemonDetails.name}
-                </Typography.Text>
+            <div className="margin-at-top">
+              <div> 
+                <Typography.Text className="pokemon-name">{pokemonDetails.name}</Typography.Text>
               </div>
-              <div>
-                <Typography.Text
-                  style={{ color: "Darkgrey", fontSize: "14px" }}
-                >
-                  # {formattedNumber}
-                </Typography.Text>
+              <div >
+                <Typography.Text className="pokemon-number"># {formattedNumber}</Typography.Text>
               </div>
             </div>
-            <div style={{ marginTop: "10px" }}>
+            <div className="margin-at-top">
               {pokemonDetails.types.map((el) => (
                 <PokemonType key={el.type.name} type={el.type.name} />
               ))}
@@ -94,53 +60,32 @@ const PokedexCard = ({ pokemonDetails }) => {
           </Card>
         </div>
         <div className="back">
-          <Card
-            style={{
-              position: "relative",
-              textAlign: "center",
-              boxShadow:
-                "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: "10px",
-                left: "10px",
-                zIndex: 1,
-              }}
-            >
+          <Card className="pokemon-card-back">
+            <div className="favorite-button-back">
               <Button
                 onClick={handleFavoriteClick}
                 type="text"
                 icon={
                   isFavorite(pokemonDetails) ? (
-                    <MdFavorite style={{ color: "red", fontSize: "20px" }} />
+                    <MdFavorite className="favorite-color" />
                   ) : (
-                    <MdFavoriteBorder style={{ fontSize: "20px" }} />
+                    <MdFavoriteBorder className="favorite-icon" />
                   )
                 }
               />
             </div>
-            <div
-              style={{
-                position: "absolute",
-                top: "-50px",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
+            <div className="image-container">
               {pokemonDetails.sprites["back_default"] && (
                 <img
                   src={pokemonDetails.sprites["back_default"]}
                   alt={pokemonDetails.name}
-                  style={{ width: "100%" }}
+                  className="img-width"
                 />
               )}
             </div>
-            <Row style={{ marginTop: 20 }}>
+            <Row className="margin-at-top-increase">
               <Col span={12}>
-                <div style={{ marginTop: "10px" }}>
+                <div className="margin-at-top">
                   <GenericInfo
                     height={pokemonDetails.height}
                     weight={pokemonDetails.weight}

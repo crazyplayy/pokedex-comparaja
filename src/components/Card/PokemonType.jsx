@@ -1,22 +1,13 @@
 import React from "react";
 import { Tag } from "antd";
 import PokemonTypeColorPicker from "../utils/ColorPickerType";
+import "../../styles/components/Card/PokemonType.css"
 
 const PokemonType = ({ type }) => {
-  const { backgroundColor, color } = PokemonTypeColorPicker({ type }); 
+  const { backgroundColor, color } = PokemonTypeColorPicker({ type });
 
   return (
-    <Tag
-      style={{
-        backgroundColor,
-        color,
-        padding: "5px 10px",
-        borderRadius: "5px",
-        textTransform: "capitalize",
-        fontWeight: "bold",
-        margin: "0px 5px",
-      }}
-    >
+    <Tag className="tag-container" style={{ backgroundColor, color }}>
       {type}
     </Tag>
   );

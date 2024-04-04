@@ -1,0 +1,46 @@
+.avatar-container {
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .avatar-background {
+    border: 1px solid #A9A9A9;
+    border-radius: 25%;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .avatar-image {
+    width: 150px;
+  }
+  
+  .shiny-button {
+    position: absolute;
+    top: 0;
+    right: -55px;
+    z-index: 1;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shiny-button-icon {
+    color: #ffff1a;
+  }
+  
+  .gender-button {
+    background-color: #fff;
+    position: absolute;
+    top: 40px;
+    right: -55px;
+    z-index: 1;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .avatar-name {
+    text-transform: capitalize;
+  }
+  
+  .avatar-number {
+    color: darkgrey !important;
+  }
+  
