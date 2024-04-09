@@ -20,6 +20,14 @@ const PokemonCard = ({ pokemonDetails }) => {
   };
 
   return (
+    /*************************************************
+    *                  Improvements                  *
+    *************************************************/
+    /* Here you can instead of having this Card, you can have a div to change the behavior of the card's layout
+    (when we change the screen size)
+      -> add some styles like display: flex or display: grid (and play with it =) ) or simply add your styles (border-radius, etc.)
+      -> your Row can be a div with display: flex and add a @media (max-width: 1280px) { flex-direction: column; align-items: center;}
+    */
     <Card className="card-container">
       <div className="favorite-button">
         <Button
