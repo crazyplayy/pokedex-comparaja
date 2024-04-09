@@ -43,3 +43,9 @@
 .avatar-number {
   color: darkgrey !important;
 }
+
+/* Improvement: Here we can delete this !important.
+Check the others !important if it's the same thought */
+/* .ant-typography.avatar-number {
+  color: darkgrey;
+} */
