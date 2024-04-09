@@ -325,7 +325,10 @@ This section suggests areas for improvement or optimization.
 
 # <center> QUICK DEMO </center>
 
-![quick-demo](https://github.com/crazyplayy/pokedex-comparaja/assets/48414755/0f557189-efab-4472-8a79-2b60954b5216)
+
+https://github.com/crazyplayy/pokedex-comparaja/assets/48414755/78a565f4-9b9c-472a-a5e9-df88fd0a5014
+
+
 
 
 
