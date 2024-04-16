@@ -1,11 +1,17 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import { fetchPokemonDetails, fetchPokemonList } from "../components/utils/api";
 import GenerationPicker from "../components/utils/GenerationPicker";
 
 const PokemonContext = createContext({});
 
 export const PokemonProvider = ({ children }) => {
-  const [pokemonList, setPokemonList] = useState([]); 
+  const [pokemonList, setPokemonList] = useState([]);
   const [pokemonDetails, setPokemonDetails] = useState(null); //Store only one Pokémon details
   const [favorites, setFavorites] = useState([]);
   const [selectedGeneration, setSelectedGeneration] = useState("all");
@@ -31,30 +37,37 @@ export const PokemonProvider = ({ children }) => {
   };
 
   // Function for fetching a list of Pokemons based on how much is required per page
-  const fetchPokemonData = async (offset) => {
-    setLoading(true);
-    try {
-      const { pokemonData, total } = await fetchPokemonList(pageSize, offset, selectedGeneration);
-      setPokemonList(pokemonData);
-      setTotalPages(total);
-      setLoading(false);
-      setError(null);
-    } catch (error) {
-      setLoading(false);
-      setError(error.message);
-    }
-  };
+  const fetchPokemonData = useCallback(
+    async (offset) => {
+      setLoading(true);
+      try {
+        const { pokemonData, total } = await fetchPokemonList(
+          pageSize,
+          offset,
+          selectedGeneration
+        );
+        setPokemonList(pokemonData);
+        setTotalPages(total);
+        setLoading(false);
+        setError(null);
+      } catch (error) {
+        setLoading(false);
+        setError(error.message);
+      }
+    },
+    [pageSize, selectedGeneration]
+  );
 
   // fetch pokemon data when current Pokédex page changes
   useEffect(() => {
     fetchPokemonData((currentPage - 1) * pageSize);
-  }, [currentPage]);
+  }, [currentPage, fetchPokemonData]);
 
   // fetch pokemon data when a generation is selected on the filter
   useEffect(() => {
-    const {amount} = GenerationPicker(selectedGeneration); //How many Pokémon will be displayed on a single page
+    const { amount } = GenerationPicker(selectedGeneration); //How many Pokémon will be displayed on a single page
     fetchPokemonData(amount);
-  }, [selectedGeneration]);
+  }, [selectedGeneration, fetchPokemonData]);
 
   const goToNextPage = () => {
     if (currentPage < totalPages) {
@@ -68,7 +81,7 @@ export const PokemonProvider = ({ children }) => {
     }
   };
 
-  const goToFirstPage= () => {
+  const goToFirstPage = () => {
     setCurrentPage(1);
   };
 
