@@ -40,6 +40,6 @@
   text-transform: capitalize;
 }
 
-.avatar-number {
-  color: darkgrey !important;
+.ant-typography.avatar-number {
+  color: darkgrey;
 }

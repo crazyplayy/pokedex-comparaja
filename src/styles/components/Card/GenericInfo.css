@@ -1,5 +1,9 @@
-.generic-info-item {
-  text-align: center !important;
+.ant-descriptions-item-label.generic-info-item {
+  text-align: center;
+}
+
+.ant-descriptions-item-content.generic-info-item {
+  text-align: center;
 }
 
 .generic-info-text {

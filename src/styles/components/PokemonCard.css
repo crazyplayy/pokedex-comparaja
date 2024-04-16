@@ -28,7 +28,7 @@
   }
   
   .card-col-right {
-    border-left: 1px solid #e8e8e8 !important;
+    border-left: 1px solid #e8e8e8;
     padding-left: 30px !important;
     padding-right: 10px !important;
   }
